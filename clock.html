@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 钟表</title>
+    <style>
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            border: 10px solid skyblue;
+            border-radius: 300px;
+            position: relative;
+        }
+        .line{
+            width: 8px;
+            height: 100%;
+            background-color: #cccccc;
+            position: absolute;
+            left: 146px;
+        }
+        .line1{
+            background-color: black;
+            width: 10px;
+        }
+        .line4{
+            width: 10px;
+            background-color: black;
+            transform:rotate(90deg);
+        }
+        .line2{
+            transform:rotate(30deg);
+        }
+        .line3{
+            transform:rotate(60deg);
+        }
+        .line5{
+            transform:rotate(120deg);
+        }
+        .line6{
+            transform:rotate(150deg);
+        }
+        .cover{
+            width: 250px;
+            height: 250px;
+            border-radius: 125px;
+            background-color: #fff;
+            position: absolute;
+            left: 27px;
+            top: 27px;
+
+        }
+        .hour{
+            position: absolute;
+            left: 149px;
+            top: 50px;
+            width: 10px;
+            height: 100px;
+            background-color: black;
+
+            transform-origin: center bottom;
+        }
+        .minute{
+            position: absolute;
+            left: 149px;
+            top: 30px;
+            width: 8px;
+            height: 120px;
+            background-color: black;
+
+            transform-origin: center bottom;
+        }
+        .second{
+            position: absolute;
+            left: 149px;
+            top: 20px;
+            width: 6px;
+            height: 130px;
+            background-color: red;
+
+            transform-origin: center bottom;
+        }
+        .dotted{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 10px;
+            position: absolute;
+            left: 143px;
+            top: 140px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="clock">
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="line line4"></div>
+    <div class="line line5"></div>
+    <div class="line line6"></div>
+    <div class="cover"></div>
+    <div class="hour"></div>
+    <div class="minute"></div>
+    <div class="second"></div>
+    <div class="dotted"></div>
+</div>
+<script>
+
+    var shi=document.getElementsByClassName("hour")[0];
+    var fen=document.getElementsByClassName("minute")[0];
+    var miao=document.getElementsByClassName("second")[0];
+    setInterval(function(){
+        var dt=new Date();
+        var h = dt.getHours();
+        h=h<12?h:h-12;
+        var m = dt.getMinutes();
+        var s=dt.getSeconds();
+        console.log(h);
+//        shi.style.transform="rotate("+h*30+"deg)";
+        shi.style.transform="rotate("+(h*30+(m*360/60)*30/360)+"deg)";
+        fen.style.transform="rotate("+m*6+"deg)";
+        miao.style.transform="rotate("+s*6+"deg)";
+        29*360/60
+    },1000);
+
+</script>
+</body>
+</html>
